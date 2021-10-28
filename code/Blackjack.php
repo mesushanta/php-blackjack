@@ -1,8 +1,7 @@
 <?php
 
-/**
- * 
- */
+declare(strict_types=1);
+
 class Blackjack
 {
   private $player;
@@ -15,6 +14,10 @@ class Blackjack
     $this->deck->shuffle();
     $this->player = new Player($this->deck);
     $this->dealer = new Player($this->deck);
+    
+    if(isset($_GET['call']) && ($_GET['call'] == 'hit')){
+      $this->player->hit();
+    }
     
   }
   
