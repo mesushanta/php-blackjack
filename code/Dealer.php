@@ -6,6 +6,7 @@ class Dealer extends Player
 {
 
   private $allCards = false;
+  private $completed = false;
 
   public function stand($deck) {
     $this->allCards = true;
@@ -17,10 +18,15 @@ class Dealer extends Player
       }
       while ($score < 15);
     }
+    $this->completed = true;
   }
 
   public function showAllCards() {
     return $this->allCards;
+  }
+
+  public function gameCompleted() {
+    return $this->completed;
   }
 
 

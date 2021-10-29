@@ -27,7 +27,7 @@ class Player
     $this->lost = true;
   }
 
-  public function hasLost() : bool{
+  public function hasLost() : bool {
     return $this->lost;
   }
 
@@ -39,7 +39,7 @@ class Player
     return $score;
   }
 
-  
+
   public function getFirstCardOnly() {
     return $this->cards[0];
   }

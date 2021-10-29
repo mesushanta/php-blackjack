@@ -29,21 +29,27 @@ class Blackjack
   }
 
   public function getResult() {
-    $player_score = $this->player->getScore();
-    $dealer_score = $this->dealer->getScore();
-      if(!$this->player->hasLost() && !$this->dealer->hasLost()) {
-        if($player_score > $dealer_score) {
-          $result = "win";
-        }
-        else if($player_score < $dealer_score ) {
-          $result = "lose";
-        }
-
-        else if($player_score == $dealer_score) {
-          $result = "tie";
-        }
+    $result = 'incomplete';
+    if($this->player->hasLost()) {
+      $result = 'lose';
+    }
+    if($this->dealer->hasLost()) {
+      $result = 'win';
+    }
+    if($this->dealer->gameCompleted() && !$this->player->hasLost() && !$this->dealer->hasLost()) {
+      $player_score = $this->player->getScore();
+      $dealer_score = $this->dealer->getScore();
+      if($player_score > $dealer_score) {
+        $result = "win";
+      }
+      else if($player_score < $dealer_score ) {
+        $result = "lose";
       }
 
+      else if($player_score == $dealer_score) {
+        $result = "tie";
+      }
+    }
       return $result;
   }
 

@@ -38,8 +38,7 @@ if(isset($_POST['stand'])) {
   $blackjack->getDealer()->stand($blackjack->getDeck());
   $_SESSION['blackjack'] = $blackjack;
 }
-
-var_dump($blackjack->getDealer()->showAllCards());
+$result = $blackjack->getResult();
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -82,16 +81,22 @@ var_dump($blackjack->getDealer()->showAllCards());
         <div class="col-span-1">
           <h2 class="text-xl text-blue-600 text-center">PLAYER</h2>
 
-          <?php if($blackjack->getPlayer()->hasLost()) { ?>
+          <?php if($result == 'lose') { ?>
             <div class="border bg-red-50 border-red-400 my-4 px-5 py-3 text-xl text-gray-700">
               You have lost.
             </div>
           <?php } ?>
-          <?php if($blackjack->getDealer()->hasLost()) { ?>
+          <?php if($result == 'win') { ?>
             <div class="border bg-green-50 border-green-400 my-4 px-5 py-3 text-xl text-gray-700">
               You have Won.
             </div>
           <?php } ?>
+        
+          <?php if($result == 'tie') { ?>
+              <div class="border bg-yellow-50 border-yellows-400 my-4 px-5 py-3 text-xl text-gray-700">
+                It's a tie.
+              </div>
+            <?php } ?>
 
           <div class="w-full h-auto text-center">
             <?php foreach($blackjack->getPlayer()->getCards() AS $card) { ?>
@@ -109,6 +114,7 @@ var_dump($blackjack->getDealer()->showAllCards());
               <button class="inline-block mx-2 h-10 px-4 rounded-sm bg-blue-500 hover:bg-blue-600 border border-blue-700 text-white <?php if($blackjack->getPlayer()->hasLost() || $blackjack->getDealer()->hasLost()) echo 'hidden'; ?>" type="submit" name="stand">Stand</button>
 
               <button class="inline-block mx-2 h-10 px-4 rounded-sm bg-blue-500 hover:bg-blue-600 border border-blue-700 text-white <?php if($blackjack->getPlayer()->hasLost() || $blackjack->getDealer()->hasLost()) echo 'hidden'; ?>" type="submit" name="surrender">Surrender</button>
+              
               <button class="inline-block mx-2 h-10 px-4 rounded-sm bg-blue-500 hover:bg-blue-600 border border-blue-700 text-white" type="submit" name="restart"s>Restart</button>
             </form>
           </div>
