@@ -20,7 +20,6 @@ class Dealer extends Player
     }
     $this->completed = true;
   }
-
   public function showAllCards() {
     return $this->allCards;
   }

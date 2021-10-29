@@ -23,7 +23,7 @@ class Player
     }
   }
 
-  public function surrender() {
+  public function surrender() : bool {
     $this->lost = true;
   }
 
@@ -31,7 +31,7 @@ class Player
     return $this->lost;
   }
 
-  public function getScore() {
+  public function getScore() : int {
     $score = 0;
       foreach ($this->cards as $card) {
         $score += $card->getValue();

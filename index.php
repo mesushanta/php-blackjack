@@ -10,9 +10,6 @@ require './code/Blackjack.php';
 
 session_start();
 
-// session_unset();
-
-
 if(isset($_POST['restart'])) {
   unset($blackjack);
   unset($_SESSION['blackjack']);
