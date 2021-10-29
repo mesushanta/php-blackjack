@@ -30,6 +30,9 @@ class Blackjack
 
   public function getResult() {
     $result = 'incomplete';
+    if($this->player->getScore() == 21) {
+      $result = "jackpot";
+    }
     if($this->player->hasLost()) {
       $result = 'lose';
     }
@@ -39,6 +42,7 @@ class Blackjack
     if($this->dealer->gameCompleted() && !$this->player->hasLost() && !$this->dealer->hasLost()) {
       $player_score = $this->player->getScore();
       $dealer_score = $this->dealer->getScore();
+      
       if($player_score > $dealer_score) {
         $result = "win";
       }

@@ -37,6 +37,7 @@ if(isset($_POST['stand'])) {
 }
 $result = $blackjack->getResult();
 ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -83,12 +84,19 @@ $result = $blackjack->getResult();
               You have lost.
             </div>
           <?php } ?>
+          
+          <?php if($result == 'jackpot') { ?>
+            <div class="border bg-green-50 border-green-400 my-4 px-5 py-3 text-xl text-gray-700">
+              You have Won coz you have 21.
+            </div>
+          <?php } ?>
+          
           <?php if($result == 'win') { ?>
             <div class="border bg-green-50 border-green-400 my-4 px-5 py-3 text-xl text-gray-700">
               You have Won.
             </div>
           <?php } ?>
-        
+          
           <?php if($result == 'tie') { ?>
               <div class="border bg-yellow-50 border-yellows-400 my-4 px-5 py-3 text-xl text-gray-700">
                 It's a tie.
@@ -107,11 +115,8 @@ $result = $blackjack->getResult();
           <div class="my-12 text-center">
             <form class="inline-block" method="post" action="/">
               <button class="inline-block mx-2 h-10 px-4 rounded-sm bg-blue-500 hover:bg-blue-600 border border-blue-700 text-white <?php if($blackjack->getPlayer()->hasLost() || $blackjack->getDealer()->hasLost()) echo 'hidden'; ?>" type="submit" name="hit">Hit</button>
-
               <button class="inline-block mx-2 h-10 px-4 rounded-sm bg-blue-500 hover:bg-blue-600 border border-blue-700 text-white <?php if($blackjack->getPlayer()->hasLost() || $blackjack->getDealer()->hasLost()) echo 'hidden'; ?>" type="submit" name="stand">Stand</button>
-
-              <button class="inline-block mx-2 h-10 px-4 rounded-sm bg-blue-500 hover:bg-blue-600 border border-blue-700 text-white <?php if($blackjack->getPlayer()->hasLost() || $blackjack->getDealer()->hasLost()) echo 'hidden'; ?>" type="submit" name="surrender">Surrender</button>
-              
+              <button class="inline-block mx-2 h-10 px-4 rounded-sm bg-blue-500 hover:bg-blue-600 border border-blue-700 text-white <?php if($blackjack->getPlayer()->hasLost() || $blackjack->getDealer()->hasLost()) echo 'hidden'; ?>" type="submit" name="surrender">Surrender</button>  
               <button class="inline-block mx-2 h-10 px-4 rounded-sm bg-blue-500 hover:bg-blue-600 border border-blue-700 text-white" type="submit" name="restart"s>Restart</button>
             </form>
           </div>

@@ -17,7 +17,16 @@ This is the first exercise in Object Oriented Programming. There are prebuilt cl
 - To use class inside class as an parameter.
 - The basic flow of how the OOP works.
 
+## Rules Applied
+
+- If player hit, he gets one more card and if the total is more than 21, he lose
+- If player choose to stand, the Dealer get's new card until the total is not less than 15
+- If player surrender, he lose. 
+- At any point, if Player get 21, it's a clear win.
+- If player stand, then the score is compared and the one who has more score, he wins otherwise it's a tie
+
+
 ## What's next
 
-Implement more rules to make the game more professional. But I have very less understanding of this game so might do it later when I understand the more complex rules of the game
+Implement more rules to make the game more professional. But I have very less understanding of this game so might do it later when I understand the more complex rules of the game.
 
